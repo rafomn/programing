@@ -52,7 +52,7 @@ class GrassEater {
         this.energy--
         var emptyCells = this.chooseCell(0);
         var newCell = random(emptyCells);
-        if(newCell && this.energy >= 0) {
+        if (newCell && this.energy >= 0) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = matrix[this.y][this.x] ///kam 2 tiv@
@@ -67,7 +67,7 @@ class GrassEater {
     eat() {
         var emptyCells = this.chooseCell(1);
         var newCell = random(emptyCells);
-        if(newCell) {
+        if (newCell) {
             this.energy++
             var newX = newCell[0];
             var newY = newCell[1];
@@ -81,8 +81,8 @@ class GrassEater {
                     break;
                 }
             }
-            
-            if(this.energy >= 12) {
+
+            if (this.energy >= 12) {
                 this.mul()
             }
         } else {
