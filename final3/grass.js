@@ -1,6 +1,5 @@
 class Grass extends LivingCreature {
-    constructor() {
-    }
+   
 
     mul() {
         this.multiply++;
