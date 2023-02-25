@@ -1,7 +1,8 @@
-class Hunter {
+let LivingCreature = require("./living")
+let Trap = require("./trap")
+module.exports = class Hunter extends LivingCreature{
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        super(x,y)
         this.energy = 15
         this.directions = [];
     }
@@ -33,9 +34,13 @@ class Hunter {
         return found;
     }
 
+    random(ch){
+        let found = this.chooseCell(ch);
+        let result = Math.floor(Math.random()*found.length)
+        return found[result];
+    }
     trap() {
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = this.random(0);
 
         if (newCell) {
             var newX = newCell[0];
@@ -50,8 +55,7 @@ class Hunter {
 
     move() {
         this.energy--
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = this.random(0);
         if(newCell && this.energy >= 0) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -65,8 +69,7 @@ class Hunter {
     }
 
     kill() {
-        var emptyCells = this.chooseCell(3);
-        var newCell = random(emptyCells);
+        var newCell = this.random(3);
         if(newCell) {
             this.energy+=20
             var newX = newCell[0];

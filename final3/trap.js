@@ -1,4 +1,5 @@
-class Trap extends LivingCreature{ 
+let LivingCreature = require("./living")
+module.exports = class Trap extends LivingCreature{ 
     constructor(x, y) {
     super(x,y)
     this.energy = 1
@@ -18,11 +19,14 @@ getNewCoordinates() {
 
 
 
-
+random(ch){
+    let found = this.chooseCell(ch);
+    let result = Math.floor(Math.random()*found.length)
+    return found[result];
+}
 
 eat() {
-    var emptyCells = this.chooseCell(3);
-    var newCell = random(emptyCells);
+    var newCell = this.random(3);
     if(newCell) {
         this.energy--
         var newX = newCell[0];
